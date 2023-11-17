@@ -4,7 +4,7 @@ const db = require('./database/db')
 const port = 3000;
 
 app.listen(port, () => {
-    console.log('Servidor online')
+    console.log('Servidor ')
     console.log(`http://localhost:${port}`)
 })
 
