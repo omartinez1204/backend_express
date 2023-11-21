@@ -11,9 +11,11 @@ const ProfesorSchema = new Schema({
         type: String,
         required: true,
     },
-    carrera,
-    materias,
-    linea_investigacion,
+    carrera: String,
+    materias:{
+        type:String
+    },
+    linea_investigacion: String,
 })
-
-module.exports = ProfesorSchema
+const SomeModel = mongoose.model("Profesor", ProfesorSchema);
+module.exports = SomeModel
