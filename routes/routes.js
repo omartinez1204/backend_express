@@ -2,9 +2,18 @@ const express = require('express')
 const router = express.Router()
 const ProfesorController = require('../controllers/profesor_controller')
 
-router.get('/',(req, res) =>{
-    const respuesta = ProfesorController.getAllProfesor()
-    res.send(respuesta)
+router.get('/',async(req, res) =>{
+    const respuesta =  await ProfesorController.getAllProfesor()
+    const resp = {
+        "data": respuesta,
+        "hasError": null
+    }
+    res.send(resp)
 });
+
+router.post('/', (req, res)=>{
+    const respuesta = ProfesorController.insertAProfesor(req)
+    res.send(respuesta)
+})
 
 module.exports = router
