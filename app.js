@@ -13,6 +13,6 @@ app.use(morgan('common'));
 //     rep.send('Homa page APP')
 // })
 
-app.use('/', ProfesorRoute)
+app.use('/profesores', ProfesorRoute)
 
 module.exports = app;
