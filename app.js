@@ -9,9 +9,9 @@ app.use(bodyParser.json())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 app.use(morgan('common'));
-// app.get('/', (req, rep)=>{
-//     rep.send('Homa page APP')
-// })
+app.get('/', (req, rep)=>{
+    rep.send('Homa page APP')
+})
 
 app.use('/profesores', ProfesorRoute)
 
