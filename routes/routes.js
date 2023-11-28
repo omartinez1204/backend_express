@@ -11,8 +11,15 @@ router.get('/',async(req, res) =>{
     res.send(resp)
 });
 
-router.post('/', (req, res)=>{
-    const respuesta = ProfesorController.insertAProfesor(req)
+router.post('/', async(req, res)=>{
+    const respuesta = await ProfesorController.insertAProfesor(req)
+    res.send(respuesta)
+})
+
+router.put('/:id', async (req, res)=>{
+    const id  = req.params.id
+    const newData = req.body;
+    const respuesta = await ProfesorController.updateAProfesor(id, newData)
     res.send(respuesta)
 })
 

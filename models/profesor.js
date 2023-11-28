@@ -17,5 +17,5 @@ const ProfesorSchema = new Schema({
     },
     linea_investigacion: String,
 })
-const SomeModel = mongoose.model("Profesor", ProfesorSchema);
-module.exports = SomeModel
+const Profesor = mongoose.model("Profesor", ProfesorSchema);
+module.exports = Profesor
