@@ -1,33 +1,53 @@
 const Profesor = require('../models/profesor')
 
 class ProfesorController {
-    static async getAllProfesor(){
+    static async getAllProfesor(req, res){
         try {
             const con = await Profesor.find({});
-            return con;
+            return res.send({
+                    'data': con,
+                    'hasError': null   
+            })
         } catch (error) {
-            throw new Error('Error al obtener los profesores ')
+            return res.send({
+                'data': null,
+                'hasError': error
+            })
         }
     }
-    static async insertAProfesor(req){
+    static async insertAProfesor(req, res){
         try {
             const p = new Profesor(req.body)
             const respuesta = await p.save()
-            return respuesta;
+            return res.send({
+                'data': respuesta,
+                'hasError': null
+            })
         } catch (error) {
-            throw new Error('Error al insertar un profesor')
+            res.send({
+                'data': null,
+                'hasError': error
+            })
         }
     }
 
-    static async updateAProfesor( id, newData){
+    static async updateAProfesor( req, res ){
+        const id = req.params.id
+        const profesor = req.body
         try {
-            const p = new Profesor(req.body)
-            console.log('Antes de actuazuar');
-            const resp = await Profesor.updateOne( { _id: id }, {$set: newData} )
-            return resp
+            
+            const resp = await Profesor.updateOne( { _id: id }, profesor )
+            return res.send({
+                'data': resp,
+                'hasError': null
+            })
         } catch (error) {
-            throw new Error('Error al actualzar el profesor')
+            return res.send({
+                'data': null,
+                'hasError': error
+            })
         }
+        return
     }
 }
 
